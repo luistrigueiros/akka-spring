@@ -6,6 +6,11 @@ import org.springframework.context.annotation.Scope
 import org.springframework.stereotype.Component
 
 @Component
+class GreetingService {
+    fun greet(name: String) = "Hello, $name"
+}
+
+@Component
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 class GreetingActor2(private val greetingService: GreetingService) : AbstractActor() {
 
