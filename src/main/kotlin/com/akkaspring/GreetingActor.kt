@@ -10,11 +10,12 @@ class GreetingService {
     fun greet(name: String) = "Hello, $name"
 }
 
+data class Greet(val name: String)
+
+
 @Component
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 class GreetingActor(private val greetingService: GreetingService) : AbstractActor() {
-
-    data class Greet(val name: String)
 
     fun onGreet(message: Greet) {
         greetingService.greet(message.name).let {

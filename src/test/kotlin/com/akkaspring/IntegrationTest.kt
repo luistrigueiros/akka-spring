@@ -29,7 +29,7 @@ class IntegrationTest : AbstractJUnit4SpringContextTests() {
         val greeter = system.actorOf(greetingActor, "greeter")
         val duration = FiniteDuration.create(1, TimeUnit.SECONDS)
         val timeout = Timeout.durationToTimeout(duration)
-        val result = ask(greeter, GreetingActor.Greet("John"), timeout)
+        val result = ask(greeter, Greet("John"), timeout)
         Assert.assertEquals("Hello, John", Await.result(result, duration))
     }
 }
