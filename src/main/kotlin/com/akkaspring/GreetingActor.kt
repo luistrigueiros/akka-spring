@@ -12,7 +12,7 @@ class GreetingService {
 
 @Component
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-class GreetingActor2(private val greetingService: GreetingService) : AbstractActor() {
+class GreetingActor(private val greetingService: GreetingService) : AbstractActor() {
 
     data class Greet(val name: String)
 
