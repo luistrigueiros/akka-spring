@@ -1,2 +1,12 @@
 
 /.project
+.idea
+.settings
+.vscode
+bin
+build
+out
+.history
+.gradle
+/.classpath
+/akka-spring-test.iws
