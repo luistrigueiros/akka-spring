@@ -4,6 +4,7 @@ import akka.actor.AbstractActor
 import org.springframework.beans.factory.config.ConfigurableBeanFactory
 import org.springframework.context.annotation.Scope
 import org.springframework.stereotype.Component
+import javax.inject.Named
 
 @Component
 class GreetingService {
@@ -14,6 +15,7 @@ data class Greet(val name: String)
 
 
 @Component
+@Named("GreetingActor")
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 class GreetingActor(private val greetingService: GreetingService) : AbstractActor() {
 

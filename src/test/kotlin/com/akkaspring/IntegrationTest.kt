@@ -1,6 +1,8 @@
 package com.akkaspring
 
 import akka.actor.ActorSystem
+import akka.pattern.Patterns.ask
+import akka.util.Timeout
 import org.junit.After
 import org.junit.Assert
 import org.junit.Test
@@ -10,8 +12,6 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests
 import scala.concurrent.Await
 import scala.concurrent.duration.FiniteDuration
 import java.util.concurrent.TimeUnit
-import akka.util.Timeout
-import akka.pattern.Patterns.ask
 
 @ContextConfiguration(classes = [AppConfiguration::class])
 class IntegrationTest : AbstractJUnit4SpringContextTests() {
@@ -25,7 +25,7 @@ class IntegrationTest : AbstractJUnit4SpringContextTests() {
 
     @Test
     fun firstSimpleTest() {
-        val greetingActor = SpringExtension.get(system).props("greetingActor")
+        val greetingActor = SpringExtension.get(system).props("GreetingActor")
         val greeter = system.actorOf(greetingActor, "greeter")
         val duration = FiniteDuration.create(1, TimeUnit.SECONDS)
         val timeout = Timeout.durationToTimeout(duration)

@@ -16,7 +16,7 @@ fun main(args: Array<String>) {
     val system = ctx.getBean(ActorSystem::class.java)
     val springExt = SpringExtension.get(system)
 
-    val greeter = system.actorOf(springExt.props("greetingActor"), "greetingActor")
+    val greeter = system.actorOf(springExt.props("GreetingActor"), "greetingActor")
     greeter.tell(Greet("Oscar"), ActorRef.noSender())
     val duration = FiniteDuration.create(1, TimeUnit.SECONDS)
     val timeout = Timeout.durationToTimeout(duration)
