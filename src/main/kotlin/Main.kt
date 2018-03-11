@@ -1,4 +1,3 @@
-import akka.actor.ActorRef
 import akka.actor.ActorSystem
 import akka.pattern.Patterns
 import akka.util.Timeout
@@ -17,7 +16,6 @@ fun main(args: Array<String>) {
     val springExt = SpringExtension.get(system)
 
     val greeter = system.actorOf(springExt.props("GreetingActor"), "greetingActor")
-    greeter.tell(Greet("Oscar"), ActorRef.noSender())
     val duration = FiniteDuration.create(1, TimeUnit.SECONDS)
     val timeout = Timeout.durationToTimeout(duration)
     val result = Patterns.ask(greeter, Greet("John"), timeout)
