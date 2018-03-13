@@ -9,12 +9,12 @@ import org.springframework.context.annotation.Configuration
 
 @Configuration
 @ComponentScan
-class AppConfiguration {
+open class AppConfiguration {
     @Autowired
     private lateinit var applicationContext: ApplicationContext
 
     @Bean
-    fun actorSystem(): ActorSystem {
+    open fun actorSystem(): ActorSystem {
         val system = ActorSystem.create("akka-spring-demo")
         SpringExtension.get(system).initialize(applicationContext)
         return system
